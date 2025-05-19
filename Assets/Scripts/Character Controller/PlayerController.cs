@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     int isCrouchWalkingHash;
     int isRunningHash;
 
+    public bool isHiding = false;
+
     [SerializeField] bool underSomething = false;
     [SerializeField] LayerMask overhedFilter;
     void Start()

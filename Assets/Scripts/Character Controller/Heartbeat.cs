@@ -9,8 +9,8 @@ public class ProximityEffectsController : MonoBehaviour
     [SerializeField] private Transform targetObject;
     [SerializeField] private float maxDistance = 20f;
     [SerializeField] private float minDistance = 2f;
-    [SerializeField] private Animator animator; 
-    [SerializeField] private float animationTriggerDistance = 5f;
+    //[SerializeField] private Animator animator; 
+    //[SerializeField] private float animationTriggerDistance = 5f;
 
     private bool isEnemyNear = false;
 
@@ -45,11 +45,11 @@ public class ProximityEffectsController : MonoBehaviour
             Debug.LogError("Vignette override not found in Volume profile.");
         }
 
-        if (animator == null)
-        {
-            Debug.LogError("No Animator found on this GameObject.");
+        // if (animator == null)
+        // {
+        //     Debug.LogError("No Animator found on this GameObject.");
 
-        }
+        // }
             
     }
 
@@ -71,17 +71,17 @@ public class ProximityEffectsController : MonoBehaviour
         vignette.intensity.value = Mathf.Lerp(minVignetteIntensity, maxVignetteIntensity, proximityFactor);
 
     
-        if (distance <= animationTriggerDistance)
-        {
-            if (!isEnemyNear)
-            {
-                animator.SetTrigger("EnemyNear"); // your animation trigger name
-                isEnemyNear = true;
-            }
-        }
-        else
-        {
-            isEnemyNear = false;
-        }
+        // if (distance <= animationTriggerDistance)
+        // {
+        //     if (!isEnemyNear)
+        //     {
+        //         animator.SetTrigger("EnemyNear"); // your animation trigger name
+        //         isEnemyNear = true;
+        //     }
+        // }
+        // else
+        // {
+        //     isEnemyNear = false;
+        // }
     }
 }

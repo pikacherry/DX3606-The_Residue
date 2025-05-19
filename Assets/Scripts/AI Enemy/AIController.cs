@@ -1,6 +1,7 @@
-using System.Numerics;
+//using System.Numerics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class AIController : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class AIController : MonoBehaviour
 
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
-        navMeshAgent.stoppingDistance = 2f;
+        navMeshAgent.stoppingDistance = 1f;
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
         
     }
@@ -72,26 +73,30 @@ public class AIController : MonoBehaviour
     private void Chasing(){
         m_PlayerNear = false;
         playerLastPosition = UnityEngine.Vector3.zero;
-    if(!m_CaughtPlayer){
-        float distanceToPlayer = UnityEngine.Vector3.Distance(transform.position, m_PlayerPosition); 
-        if(distanceToPlayer > navMeshAgent.stoppingDistance + 0.1f) // Keep 2f distance
-        {
-            Move(speedRun);
-            navMeshAgent.SetDestination(m_PlayerPosition);
-        }
-        else
-        {
-            Stop(); // Stop if too close
-            // rotate to face the player
-            UnityEngine.Vector3 lookDirection = (m_PlayerPosition - transform.position).normalized;
-            lookDirection.y = 0f;
-            if(lookDirection != UnityEngine.Vector3.zero)
+        if(!m_CaughtPlayer){
+            float distanceToPlayer = UnityEngine.Vector3.Distance(transform.position, m_PlayerPosition); 
+            if(distanceToPlayer > navMeshAgent.stoppingDistance + 0.1f)
             {
-                UnityEngine.Quaternion lookRotation = UnityEngine.Quaternion.LookRotation(lookDirection);
-                transform.rotation = UnityEngine.Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+                Move(speedRun);
+                navMeshAgent.SetDestination(m_PlayerPosition);
+            }
+            else
+            {
+                Stop(); // Stop if too close
+                // rotate to face the player
+                UnityEngine.Vector3 lookDirection = (m_PlayerPosition - transform.position).normalized;
+                lookDirection.y = 0f;
+                if(lookDirection != UnityEngine.Vector3.zero)
+                {
+                    UnityEngine.Quaternion lookRotation = UnityEngine.Quaternion.LookRotation(lookDirection);
+                    transform.rotation = UnityEngine.Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+                }
+                if(!m_CaughtPlayer)
+                {
+                    CaughtPlayer();
+                }
             }
         }
-    }
         
 
         if(!m_PlayerInRange) {
@@ -175,8 +180,15 @@ public class AIController : MonoBehaviour
 
 
 
-    void CaughtPlayer() {
+    void CaughtPlayer()
+    {
         m_CaughtPlayer = true;
+
+        // Unlock and show the cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        SceneManager.LoadScene("Lost Scene");
     }
 
     void LookingPlayer(UnityEngine.Vector3 player) {
@@ -198,41 +210,44 @@ public class AIController : MonoBehaviour
 
     void EnvironmentView() {
         m_PlayerInRange = false;
-        Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
         bool canSeePlayer = false;
+
+        Collider[] playerInRange = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
         for(int i = 0; i < playerInRange.Length; i++)
         {
             Transform player = playerInRange[i].transform;
-            UnityEngine.Vector3 dirToPlayer = (player.position - transform.position).normalized;
+            PlayerController playerController = player.GetComponent<PlayerController>();
 
-            if(UnityEngine.Vector3.Angle(transform.forward, dirToPlayer) < viewAngle/2)
+            if (playerController != null && playerController.isHiding)
             {
-                float dstToPlayer = UnityEngine.Vector3.Distance(transform.position, player.position);
-                
-                if(!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask)){
-                    canSeePlayer = true;
+                // Skip detection if player is hiding
+                continue;
+            }
+
+            Vector3 dirToPlayer = (player.position - transform.position).normalized;
+
+            if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
+            {
+                float dstToPlayer = Vector3.Distance(transform.position, player.position);
+
+                if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
+                {
                     m_PlayerInRange = true;
                     m_IsPatrol = false;
-                    m_PlayerPosition = player.transform.position;
+                    m_PlayerPosition = player.position;
                     timeSinceLastSeen = 0f;
+                    canSeePlayer = true;  // Important: mark player as seen
                     break;
-
-                } else {
-                    m_PlayerInRange =false;
                 }
             }
-        
         }
 
         if(!canSeePlayer) {
             timeSinceLastSeen += Time.deltaTime;
+            m_PlayerInRange = false;   // Make sure to reset player in range if not seen
+            m_IsPatrol = true;         // Resume patrolling if player lost
         }
-
-        // if(m_PlayerInRange)
-        // {
-        //     m_PlayerPosition = player.transform.position;
-        // }
     }
 
     

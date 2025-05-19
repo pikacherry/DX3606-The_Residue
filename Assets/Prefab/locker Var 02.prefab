@@ -98,13 +98,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5627750857458325230}
   - component: {fileID: 3666648019540239320}
+  - component: {fileID: 7954611218393956086}
   m_Layer: 9
-  m_Name: Collider (2)
+  m_Name: Hiding Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5627750857458325230
 Transform:
   m_ObjectHideFlags: 0
@@ -135,12 +136,24 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4313005, y: 1.3956704, z: 71.7315}
+  m_Center: {x: -0.07024115, y: -0.034000553, z: 35.365726}
+--- !u!114 &7954611218393956086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516650164108232107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f86db3dd924fec40b1db69d388712ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6012610229184631640
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f5b9916784f6c5a42b96b52ea5756a73,
         type: 3}
       propertyPath: m_Name
-      value: locker
+      value: locker Var 02
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f5b9916784f6c5a42b96b52ea5756a73,
         type: 3}
