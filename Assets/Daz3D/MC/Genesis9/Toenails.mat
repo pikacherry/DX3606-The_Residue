@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 2800000, guid: 6f4bde9a60dcd164b803b06f61090120, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -88,7 +88,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularLobe1RoughnessMap:
-        m_Texture: {fileID: 2800000, guid: 00d23925d2cf1bd46b78ceeefe1e41ce, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularLobe2RoughnessMap:
@@ -112,7 +112,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyColorMap:
-        m_Texture: {fileID: 2800000, guid: 1587b2ee6d4a589409d78612a12553ab, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _uDTUSubDualLobeSpecular_a1880842a7097e8e9e5a33d253d94fb3_Texture2DA943A615_25987727_Texture2D:
@@ -180,7 +180,7 @@ Material:
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &1419919704280640785
+--- !u!114 &4533213787156925986
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool underSomething = false;
     [SerializeField] LayerMask overhedFilter;
-    private void Start()
+    void Start()
     {
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
@@ -51,8 +51,11 @@ public class PlayerController : MonoBehaviour
         isCrouchWalkingHash = Animator.StringToHash("IsCrouchWalking");
         isRunningHash = Animator.StringToHash("IsRunning");
 
-        crouching = false;
+        // ✅ Reset CharacterController properties
+        controller.height = normalHeight;
+        controller.center = new Vector3(0, normalHeight / 2f, 0);
 
+        crouching = false;
     }
 
     void Update()
@@ -70,7 +73,7 @@ public class PlayerController : MonoBehaviour
             controller.Move(move.normalized * playerSpeed * Time.deltaTime);
         }
 
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        //controller.Move(move * Time.deltaTime * playerSpeed);
 
         walking = movement.magnitude > 0;
 
@@ -122,7 +125,8 @@ public class PlayerController : MonoBehaviour
             
             crouching = true;
             animator.SetBool(isCrouchingHash,true); 
-            controller.height -= crouchScale * Time.deltaTime;
+            controller.height = Mathf.MoveTowards(controller.height, crouchHeight, crouchScale * Time.deltaTime);
+
             controller.center = new Vector3(0, controller.height/2f, 0);
             if(controller.height <= crouchHeight) {
                 controller.height = crouchHeight; 
@@ -133,7 +137,7 @@ public class PlayerController : MonoBehaviour
             crouching = false;
             if (underSomething) return;
             animator.SetBool(isCrouchingHash,false);
-            controller.height += crouchScale * Time.deltaTime;
+            controller.height = Mathf.MoveTowards(controller.height, normalHeight, crouchScale * Time.deltaTime);
             controller.center = new Vector3(0, controller.height/2f, 0);
             if(controller.height >= normalHeight) {
                 controller.height = normalHeight; 
@@ -143,16 +147,25 @@ public class PlayerController : MonoBehaviour
 
    
     }
+    
+    public bool IsCrouching()
+    {
+        return crouching;
+    }
 
-    private void HandleCrouchWalking() {
-        if(walking && inputManager.PlayerCrouched()) {
+    private void HandleCrouchWalking()
+    {
+        if (walking && inputManager.PlayerCrouched())
+        {
             crouchWalking = true;
-            animator.SetBool(isCrouchWalkingHash,true);
+            animator.SetBool(isCrouchWalkingHash, true);
             playerSpeed = crouchWalkSpeed;
 
-        } else if (!sprinting) {
+        }
+        else if (!sprinting)
+        {
             crouchWalking = false;
-            animator.SetBool(isCrouchWalkingHash,false);
+            animator.SetBool(isCrouchWalkingHash, false);
             playerSpeed = walkSpeed;
 
         }

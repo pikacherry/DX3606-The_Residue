@@ -20,7 +20,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 2800000, guid: f9300d72b464ca1499135d7667972db8, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -87,7 +87,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularLobe1RoughnessMap:
-        m_Texture: {fileID: 2800000, guid: e27eaedc676297849a361ad6a47eab82, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularLobe2RoughnessMap:
@@ -111,7 +111,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TranslucencyColorMap:
-        m_Texture: {fileID: 2800000, guid: 1bca9923f2b8cc042a52de62db84a524, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _uDTUSubDualLobeSpecular_a1880842a7097e8e9e5a33d253d94fb3_Texture2DA943A615_25987727_Texture2D:
@@ -156,7 +156,7 @@ Material:
     - _MakeupWeightValue: 1
     - _Metallic: 0
     - _Normal: 1
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _Roughness: 1
     - _SpecularLobe1Roughness: 1
@@ -179,7 +179,7 @@ Material:
     - _TranslucencyColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &8815417188653701522
+--- !u!114 &5379581059888391001
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

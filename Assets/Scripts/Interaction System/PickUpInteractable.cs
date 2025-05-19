@@ -42,12 +42,12 @@ public class PickUpInteractable : InteractableBase
         isAttached = true;
         GetComponent<Rigidbody>().isKinematic = true; // Disables physics while attached
         GetComponent<Collider>().enabled = false; // Prevents re-interaction
-        Debug.Log("✅ Object attached to player!");
+        Debug.Log("Object attached to player!");
     }
 
     public void TryDestroy()
     {
-        Debug.Log("❌ Object destroyed!");
+        Debug.Log("Object destroyed!");
         Destroy(gameObject);
     }
 

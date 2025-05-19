@@ -48,7 +48,7 @@ public class AIController : MonoBehaviour
 
         navMeshAgent.isStopped = false;
         navMeshAgent.speed = speedWalk;
-        navMeshAgent.stoppingDistance = 0.2f;
+        navMeshAgent.stoppingDistance = 2f;
         navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
         
     }
@@ -72,12 +72,26 @@ public class AIController : MonoBehaviour
     private void Chasing(){
         m_PlayerNear = false;
         playerLastPosition = UnityEngine.Vector3.zero;
-
-        if(!m_CaughtPlayer){
+    if(!m_CaughtPlayer){
+        float distanceToPlayer = UnityEngine.Vector3.Distance(transform.position, m_PlayerPosition); 
+        if(distanceToPlayer > navMeshAgent.stoppingDistance + 0.1f) // Keep 2f distance
+        {
             Move(speedRun);
             navMeshAgent.SetDestination(m_PlayerPosition);
         }
-
+        else
+        {
+            Stop(); // Stop if too close
+            // rotate to face the player
+            UnityEngine.Vector3 lookDirection = (m_PlayerPosition - transform.position).normalized;
+            lookDirection.y = 0f;
+            if(lookDirection != UnityEngine.Vector3.zero)
+            {
+                UnityEngine.Quaternion lookRotation = UnityEngine.Quaternion.LookRotation(lookDirection);
+                transform.rotation = UnityEngine.Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+            }
+        }
+    }
         
 
         if(!m_PlayerInRange) {

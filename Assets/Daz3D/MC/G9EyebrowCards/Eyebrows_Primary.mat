@@ -34,7 +34,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _AlphaMap:
-        m_Texture: {fileID: 2800000, guid: 0c323e343d853db4187d2bd0a973f946, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _AmbientOcclusionMap:
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
-        m_Texture: {fileID: 2800000, guid: 2c7bbc0c041948f4fb65f5b72a668bf2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: fe2b7ba7ac4710d4ca6bc1e959e8ce03, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RoughnessMap:
@@ -144,7 +144,7 @@ Material:
     - _IndexOfRefractionWeight: 0
     - _Metallic: 0
     - _Normal: 0.5
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     - _Roughness: 0.9958334
     - _SpecularLobe1Roughness: 0
@@ -166,7 +166,7 @@ Material:
     - _TranslucencyColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7740742439373800882
+--- !u!114 &7001553617297707612
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8966183683357527385
+--- !u!114 &-7223765056060146777
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,7 +32,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 2000
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
@@ -43,7 +43,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _CutoutOpacityMap:
-        m_Texture: {fileID: 2800000, guid: ad4e280cc08d88e41941b1dd59d8120d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DiffuseMap:
@@ -59,7 +59,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: fc60f5d5f77125c47a7479ef82c72c97, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
@@ -90,7 +90,7 @@ Material:
     - _Height: 0
     - _HeightOffset: 0.25
     - _NormalStrength: 1
-    - _QueueControl: 0
+    - _QueueControl: 1
     - _QueueOffset: 0
     m_Colors:
     - _Diffuse: {r: 0.24705882, g: 0.16862746, b: 0.08235294, a: 1}
