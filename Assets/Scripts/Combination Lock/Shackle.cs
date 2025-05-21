@@ -12,5 +12,7 @@ public class Shackle : MonoBehaviour
     {
         LeanTween.moveLocalY(gameObject, yMovement, yMovementDuration).setEase(LeanTweenType.easeOutBack).setOnComplete(
             () => LeanTween.rotateAroundLocal(gameObject, Vector3.up, rotationAngle, rotationDuration).setEase(LeanTweenType.easeOutBack));
+
+        Debug.Log("The lock is opened");
     }
 }

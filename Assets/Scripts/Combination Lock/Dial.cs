@@ -13,8 +13,8 @@ public class Dial : MonoBehaviour
 
     private void Start()
     {
-        currentIndex = Random.Range(0, 9);
-        transform.localRotation = Quaternion.Euler(currentIndex * -36, 0, 0);
+        currentIndex = Random.Range(0, 4);
+        transform.localRotation = Quaternion.Euler(currentIndex * -51, 0, 0);
 
     }
 
@@ -26,10 +26,10 @@ public class Dial : MonoBehaviour
 
         currentIndex++;
 
-        if (currentIndex >= 9) currentIndex = 0;
+        if (currentIndex >= 4) currentIndex = 0;
 
         LeanTween.cancel(gameObject);
-        LeanTween.rotateAroundLocal(gameObject, Vector3.right, -36, animationDuration).setOnComplete(RotationCompleteCallback);
+        LeanTween.rotateAroundLocal(gameObject, Vector3.right, -51, animationDuration).setOnComplete(RotationCompleteCallback);
 
     }
 
