@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class LockUIBehaviour : MonoBehaviour
 {
-    public Canvas LockInfoCanvas;
+    //public Canvas LockInfoCanvas;
     Camera mainCamera;
     [SerializeField] Camera lockCamera;
     LockInteractable lockBehaviour;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,13 +22,13 @@ public class LockUIBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LockInfoCanvas.enabled = true;
+        //LockInfoCanvas.enabled = true;
         lockBehaviour.enabled = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        LockInfoCanvas.enabled = false;
+        //LockInfoCanvas.enabled = false;
         lockBehaviour.enabled = false;
     }
 }

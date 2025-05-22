@@ -16,14 +16,13 @@ public class MouseLook : MonoBehaviour
     private float yRotationVelocity;
     private Vector3 currentCameraVelocity;
 
-    private PlayerController playerController; // 👈 Reference to read crouch state
-
+    private PlayerController playerController; 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         currentXRotation = xRotation;
 
-        // 👇 Get reference to PlayerController
+        //  Get reference to PlayerController
         playerController = playerBody.GetComponent<PlayerController>();
     }
 
@@ -52,7 +51,7 @@ public class MouseLook : MonoBehaviour
     {
         if (headBone == null || playerController == null) return;
 
-        // 👇 Use crouching state from PlayerController
+        //  Use crouching state from PlayerController
         Vector3 offset = playerController.IsCrouching() ? crouchOffset : standingOffset;
         Vector3 targetPosition = headBone.TransformPoint(offset);
 

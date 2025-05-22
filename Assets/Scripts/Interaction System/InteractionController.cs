@@ -18,9 +18,11 @@ public class InteractionController : MonoBehaviour
         [SerializeField] private float raySphereRadius;
         [SerializeField] private LayerMask interactableLayer;
 
-        [Space, Header("Interaction Settings")]
+        [Space, Header("Camera")]
+        [SerializeField] private Camera initialCamera;
+
         // [SerializeField] private Transform attachPoint;
-        // [SerializeField] private string nextSceneName; 
+    // [SerializeField] private string nextSceneName; 
     #endregion
 
     #region Private
@@ -34,7 +36,7 @@ public class InteractionController : MonoBehaviour
     #region Built In Methods
         void Awake()
         {
-            m_cam = Camera.main;
+            m_cam = initialCamera != null ? initialCamera : Camera.main;
         } 
 
         void Update()
@@ -147,10 +149,6 @@ public class InteractionController : MonoBehaviour
 
             }
         }
-
-
-
-
 
     #endregion
 }

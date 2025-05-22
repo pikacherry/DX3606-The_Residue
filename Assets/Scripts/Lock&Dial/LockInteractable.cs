@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
 
 public class LockInteractable : InteractableBase
 {
@@ -14,6 +15,9 @@ public class LockInteractable : InteractableBase
 
     Collider lockCollider;
 
+    public Canvas LockInfoCanvas;
+
+
     [SerializeField] int[] lockCombination;
     [SerializeField] int[] currentCombination;
     [SerializeField] DialInteractable[] dials;
@@ -21,7 +25,11 @@ public class LockInteractable : InteractableBase
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        lockCombination = new int[] { 0, 1, 2, 3, 4 };
+        lockCamera.gameObject.SetActive(false);
+        LockInfoCanvas.gameObject.SetActive(false);
+        
+        
+        lockCombination = new int[] { 5, 2, 4, 3, 1 };
         currentCombination = new int[] { 0, 0, 0, 0, 0 };
         interactionController = FindFirstObjectByType<InteractionController>();
         mainCamera = Camera.main;
@@ -51,7 +59,9 @@ public class LockInteractable : InteractableBase
         }
     }
     public override void OnInteract()
-    {
+    {   
+        lockCamera.gameObject.SetActive(true);
+
         if (!isInteractable)
             return;
 
@@ -61,7 +71,9 @@ public class LockInteractable : InteractableBase
 
     private void GetMeOutofLock(bool outOfLock)
     {
-        lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
+        LockInfoCanvas.gameObject.SetActive(!outOfLock);
+        
+        //lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
         mainCamera.enabled = outOfLock;
         lockCamera.enabled = !outOfLock;
         lockCollider.enabled = outOfLock;
