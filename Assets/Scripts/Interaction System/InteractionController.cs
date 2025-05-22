@@ -46,7 +46,12 @@ public class InteractionController : MonoBehaviour
     #endregion
 
     #region Methods
-        private void CheckForInteractable() {
+        public void SwapCamera(Camera newCamera)
+        {
+            m_cam = newCamera;
+        }
+        private void CheckForInteractable()
+        {
             Ray ray = new Ray(m_cam.transform.position, m_cam.transform.forward);
             RaycastHit hit;
 
@@ -57,11 +62,11 @@ public class InteractionController : MonoBehaviour
                 //Debug.Log($"Hit Object: {hit.collider.gameObject.name}");
                 InteractableBase interactableBase = hit.transform.GetComponent<InteractableBase>();
 
-                if (interactableBase != null) 
+                if (interactableBase != null)
                 {
                     //Debug.Log("Found Interactable Component!");
 
-                    if(interactionData.IsEmpty())
+                    if (interactionData.IsEmpty())
                     {
                         interactionData.Interactable = interactableBase;
                         interactionUI.SetText("[ Interact ]");
@@ -70,22 +75,22 @@ public class InteractionController : MonoBehaviour
                     }
                     else
                     {
-                        if(!interactionData.IsSameInteractable(interactableBase))
+                        if (!interactionData.IsSameInteractable(interactableBase))
                         {
                             interactionData.Interactable = interactableBase;
                             interactionUI.SetText("[ Interact ]");
                             interactionUI.Show();
 
                         }
-                            
-                
+
+
                     }
 
                 }
 
             }
             else
-            {   
+            {
 
                 interactionUI.ResetUI();
                 interactionUI.HideCrosshair();
@@ -98,7 +103,7 @@ public class InteractionController : MonoBehaviour
         private void CheckForInteractableInput()
         {
             if(interactionData.IsEmpty()) return;
-                          
+                        
             
             if(interactionInputData.InteractClicked)
             {
