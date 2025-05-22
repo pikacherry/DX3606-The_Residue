@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractiveObject
   - Laundry
+  - canPickUp
   layers:
   - Default
   - TransparentFX
