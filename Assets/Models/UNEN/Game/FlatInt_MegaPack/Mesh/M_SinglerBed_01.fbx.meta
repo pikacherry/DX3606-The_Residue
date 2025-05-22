@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 588b02df851454d43a7dff5a61d5f6b8
+guid: 97e84d360ea8c68488e813d70a5d2b6a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MI_Room_Door_01_A
-    second: {fileID: 2100000, guid: 7c241d51018333f49a723c3fe3d91d4c, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
