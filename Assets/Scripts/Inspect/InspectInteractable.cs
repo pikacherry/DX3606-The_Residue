@@ -1,14 +1,39 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class InspectInteractable : InteractableBase
 {
 
-    [Space, Header("Attach")]
+    [Header("Inspect Settings")]
+    Camera mainCamera;
+
+    InteractionController interactionController;
+    [SerializeField] Camera lockCamera;
+    [SerializeField] private Image crosshair;
+    InputActions inputActions;
+
     [SerializeField] private Transform attachPoint;
-    [SerializeField] private bool isAttached = false;
+    
+
+    Collider lockCollider;
+
+    public Canvas LockInfoCanvas;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        lockCamera.gameObject.SetActive(false);
+        LockInfoCanvas.gameObject.SetActive(false);
+        interactionController = FindFirstObjectByType<InteractionController>();
+        mainCamera = Camera.main;
+        lockCollider = GetComponent<Collider>();
+
+        inputActions = new InputActions();
+        inputActions.Enable();
 
     }
 
@@ -16,26 +41,39 @@ public class InspectInteractable : InteractableBase
     void Update()
     {
 
+
+    }
+
+public override void OnInteract()
+{
+    if (!isInteractable) return;
+
+    base.OnInteract();
+
+    transform.position = attachPoint.position;
+    transform.rotation = attachPoint.rotation;
+
+    lockCamera.gameObject.SetActive(true);
+
+    GetMeOutofLock(false);
+}
+
+
+    private void GetMeOutofLock(bool outOfLock)
+    {
+        
+        LockInfoCanvas.gameObject.SetActive(!outOfLock);
+
+        //lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
+        mainCamera.enabled = outOfLock;
+        lockCamera.enabled = !outOfLock;
+        lockCollider.enabled = outOfLock;
+        crosshair.gameObject.SetActive(!outOfLock);
+
+        if (mainCamera.enabled) interactionController.SwapCamera(mainCamera);
+        else interactionController.SwapCamera(lockCamera);
+
     }
     
-        public override void OnInteract()
-    {
-        if (!isAttached)
-        {
-            PickUp();
-        }
-    }
 
-    private void PickUp()
-    {
-        if (attachPoint == null) return;
-
-        transform.SetParent(attachPoint);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        isAttached = true;
-        GetComponent<Rigidbody>().isKinematic = true; // Disables physics while attached
-        GetComponent<Collider>().enabled = false; // Prevents re-interaction
-        Debug.Log("Object attached to player!");
-    }
 }
