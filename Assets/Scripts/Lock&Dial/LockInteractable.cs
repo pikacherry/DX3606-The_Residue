@@ -22,6 +22,8 @@ public class LockInteractable : InteractableBase
     [SerializeField] int[] currentCombination;
     [SerializeField] DialInteractable[] dials;
 
+    PlayerController playerController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +37,7 @@ public class LockInteractable : InteractableBase
         mainCamera = Camera.main;
         lockUIBehaviour = GetComponentInParent<LockUIBehaviour>();
         lockCollider = GetComponent<Collider>();
+        playerController = FindFirstObjectByType<PlayerController>();
 
         inputActions = new InputActions();
         inputActions.Enable();
@@ -50,7 +53,7 @@ public class LockInteractable : InteractableBase
         }
         currentCombination = dials.Select(d => d.rotations).ToArray();
 
-        print(currentCombination[0]+" "+ currentCombination[1]+" "+ currentCombination[2]+" "+ currentCombination[3]+" "+ currentCombination[4]);
+        // print(currentCombination[0]+" "+ currentCombination[1]+" "+ currentCombination[2]+" "+ currentCombination[3]+" "+ currentCombination[4]);
         if (currentCombination.SequenceEqual(lockCombination))
         {
             print("Unlocked");
@@ -78,6 +81,8 @@ public class LockInteractable : InteractableBase
         lockCamera.enabled = !outOfLock;
         lockCollider.enabled = outOfLock;
         crosshair.gameObject.SetActive(!outOfLock);
+        //enbale/disable the player movement
+        playerController.isInspecting = !outOfLock;
 
         if (mainCamera.enabled) interactionController.SwapCamera(mainCamera);
         else interactionController.SwapCamera(lockCamera);

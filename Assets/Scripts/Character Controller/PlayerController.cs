@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float crouchSpeed, normalHeight, crouchHeight,crouchScale;
     //[SerializeField] private Vector3 offset;
-    [SerializeField] private Transform player;
-    
+    [SerializeField] private Transform player;    
     
     private bool walking;
     [SerializeField]
@@ -36,6 +35,9 @@ public class PlayerController : MonoBehaviour
     int isRunningHash;
 
     public bool isHiding = false;
+    //Damon:: This is to stop character from moving during any tyoe of inspection
+    public bool isInspecting = false;
+
 
     [SerializeField] bool underSomething = false;
     [SerializeField] LayerMask overhedFilter;
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
         controller.center = new Vector3(0, normalHeight / 2f, 0);
 
         crouching = false;
+        isInspecting = false;
     }
 
     void Update()
@@ -67,6 +70,9 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
+
+        // if the character is inspecting something, don't do the rest of the update to stop it from moving
+        if (isInspecting) return;
 
         Vector2 movement = inputManager.GetPlayerMovement();
         Vector3 move = new Vector3(movement.x, 0f, movement.y);  
