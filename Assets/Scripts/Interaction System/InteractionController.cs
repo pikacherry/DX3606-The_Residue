@@ -11,6 +11,7 @@ public class InteractionController : MonoBehaviour
 
         [Space, Header("UI")]
         [SerializeField] private InteractionUI interactionUI;
+        public string actionText = "[ Interact ]";
 
 
         [Space, Header("Ray Settings")]
@@ -71,7 +72,7 @@ public class InteractionController : MonoBehaviour
                     if (interactionData.IsEmpty())
                     {
                         interactionData.Interactable = interactableBase;
-                        interactionUI.SetText("[ Interact ]");
+                        interactionUI.SetText(interactableBase.customActionText);
                         interactionUI.Show();
 
                     }
@@ -80,7 +81,7 @@ public class InteractionController : MonoBehaviour
                         if (!interactionData.IsSameInteractable(interactableBase))
                         {
                             interactionData.Interactable = interactableBase;
-                            interactionUI.SetText("[ Interact ]");
+                            interactionUI.SetText(interactableBase.customActionText);
                             interactionUI.Show();
 
                         }

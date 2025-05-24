@@ -11,12 +11,16 @@ public class InteractableBase : MonoBehaviour, IInteractable
         public bool multipleUse;
 
         public bool isInteractable;
+        
+        [Space]
+        [Header("UI Settings")] 
+        public string customActionText = "[ Interact ]";
 
     #endregion
 
     #region Properties
 
-        public float HoldDuration => holdDuration;
+    public float HoldDuration => holdDuration;
 
         public bool HoldInteract => holdInteract;
 

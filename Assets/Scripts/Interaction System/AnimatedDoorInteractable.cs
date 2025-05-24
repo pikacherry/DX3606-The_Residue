@@ -8,6 +8,8 @@ public class AnimatedDoorInteractable : InteractableBase
     [SerializeField] private string animatorBoolName = "IsOpen";
     [SerializeField] private bool startsOpen = false;
     [SerializeField] private float animationDuration = 1.5f; // set this to match your door open/close clip
+    
+    
 
     private bool isOpen;
     private int animatorBoolHash;
@@ -32,6 +34,7 @@ public class AnimatedDoorInteractable : InteractableBase
         base.OnInteract();
 
         StartCoroutine(AnimateDoor());
+  
     }
 
     private IEnumerator AnimateDoor()
