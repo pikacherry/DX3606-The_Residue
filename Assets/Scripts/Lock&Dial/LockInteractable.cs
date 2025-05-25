@@ -17,6 +17,7 @@ public class LockInteractable : InteractableBase
     Collider lockCollider;
 
     public Canvas LockInfoCanvas;
+    [SerializeField] GameObject hint;
 
 
     [SerializeField] int[] lockCombination;
@@ -32,6 +33,7 @@ public class LockInteractable : InteractableBase
     {
         lockCamera.gameObject.SetActive(false);
         LockInfoCanvas.gameObject.SetActive(false);
+        hint.SetActive(false);
         
         
         lockCombination = new int[] { 5, 2, 4, 3, 1 };
@@ -68,7 +70,7 @@ public class LockInteractable : InteractableBase
     public override void OnInteract()
     {   
         lockCamera.gameObject.SetActive(true);
-
+        hint.SetActive(true);
         if (!isInteractable)
             return;
 
@@ -79,6 +81,7 @@ public class LockInteractable : InteractableBase
     private void GetMeOutofLock(bool outOfLock)
     {
         LockInfoCanvas.gameObject.SetActive(!outOfLock);
+        hint.SetActive(!outOfLock);
         
         //lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
         mainCamera.enabled = outOfLock;
