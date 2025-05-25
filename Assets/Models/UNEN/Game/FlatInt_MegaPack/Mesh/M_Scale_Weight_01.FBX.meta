@@ -3,7 +3,17 @@ guid: a332ad998d2b23b42a2c1f0701e0dd50
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Scale_Weight_01_A
+    second: {fileID: 2100000, guid: ab7d2693327f83c45a251e2cff6ee250, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MI_Scale_Weight_01_B
+    second: {fileID: 2100000, guid: 12cc1c0a91d3b2542a6e9f25e5ed0b40, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
