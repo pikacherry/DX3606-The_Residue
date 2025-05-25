@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LockInteractable : InteractableBase
 {
@@ -21,6 +22,8 @@ public class LockInteractable : InteractableBase
     [SerializeField] int[] lockCombination;
     [SerializeField] int[] currentCombination;
     [SerializeField] DialInteractable[] dials;
+
+    [SerializeField] private string nextSceneName;
 
     PlayerController playerController;
 
@@ -58,6 +61,7 @@ public class LockInteractable : InteractableBase
         {
             print("Unlocked");
             // do the other things you want
+            SceneManager.LoadScene(nextSceneName);
             GetMeOutofLock(true);
         }
     }

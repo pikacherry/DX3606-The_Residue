@@ -5828,7 +5828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &616154638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8732,7 +8732,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 6f8fbad609ebcd1489fde8defdb06e7d, type: 3}
   m_Resource: {fileID: 8300000, guid: 6f8fbad609ebcd1489fde8defdb06e7d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.209
+  m_Volume: 0.123
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11832,7 +11832,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1259996330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13676,7 +13676,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 531, y: -263}
+  m_AnchoredPosition: {x: 531, y: -203.5}
   m_SizeDelta: {x: 600, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532069721
@@ -15632,6 +15632,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 1
   isInteractable: 1
+  customActionText: '[ Interact ]'
   doorAnimator: {fileID: 1798278683}
   animatorBoolName: IsOpen
   startsOpen: 0
@@ -15652,6 +15653,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 1
   isInteractable: 1
+  customActionText: '[ Interact ]'
 --- !u!4 &1809291556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 10d2ab704e9a2124a95fc2bf3997eead,
@@ -16041,6 +16043,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 1
   isInteractable: 1
+  customActionText: '[ Interact ]'
 --- !u!114 &1857398848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16057,6 +16060,7 @@ MonoBehaviour:
   holdInteract: 0
   multipleUse: 1
   isInteractable: 1
+  customActionText: '[ Interact ]'
   doorAnimator: {fileID: 1857398845}
   animatorBoolName: IsOpenDoor
   startsOpen: 0
