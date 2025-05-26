@@ -10536,8 +10536,8 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3
-  m_Range: 2.8
+  m_Intensity: 4
+  m_Range: 3
   m_SpotAngle: 179
   m_InnerSpotAngle: 14.4176035
   m_CookieSize: 10
@@ -12889,7 +12889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63de131c399fc6a468c1827a56553685, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 100
+  sensitivity: 80
   smoothTime: 0.01
   playerBody: {fileID: 543450652837496212}
   headBone: {fileID: 5901452234902755095}
@@ -34074,7 +34074,7 @@ Transform:
   m_GameObject: {fileID: 6278989868573295819}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000057601145, y: 0.000000057601145, z: -0.7071067, w: 0.7071068}
-  m_LocalPosition: {x: 0.0067830086, y: 0.04241, z: 0.02482}
+  m_LocalPosition: {x: -0.09099, y: 0.0041, z: 0.0262}
   m_LocalScale: {x: 0.48096988, y: 0.48096988, z: 0.48096988}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35558,6 +35558,7 @@ MonoBehaviour:
   - {fileID: 8025967275499732225}
   - {fileID: 7090207927540587067}
   nextSceneName: 
+  outOfLock: 0
 --- !u!23 &2067206212869074442
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38764,7 +38765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6323950002176492283
 Transform:
   m_ObjectHideFlags: 0
@@ -39046,6 +39047,36 @@ PrefabInstance:
       propertyPath: 'rotateClips.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: 01b4a03e17c9111488da03a93a9d645a, type: 3}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.7822
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.95791334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.8297342
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.017266752
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.8660332
+      objectReference: {fileID: 0}
+    - target: {fileID: 7230292874533965491, guid: 112bfc16cdec36c4ca9336011433f0e1,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.08513626
+      objectReference: {fileID: 0}
     - target: {fileID: 8098043589118567134, guid: 112bfc16cdec36c4ca9336011433f0e1,
         type: 3}
       propertyPath: m_Name

@@ -14,7 +14,7 @@ public class LockInteractable : InteractableBase
     InteractionController interactionController;
     InputActions inputActions;
 
-    Collider lockCollider;
+    //Collider lockCollider;
 
     public Canvas LockInfoCanvas;
     [SerializeField] GameObject hint;
@@ -25,6 +25,7 @@ public class LockInteractable : InteractableBase
     [SerializeField] DialInteractable[] dials;
 
     [SerializeField] private string nextSceneName;
+    [SerializeField] private bool outOfLock = false;
 
     PlayerController playerController;
 
@@ -41,7 +42,7 @@ public class LockInteractable : InteractableBase
         interactionController = FindFirstObjectByType<InteractionController>();
         mainCamera = Camera.main;
         lockUIBehaviour = GetComponentInParent<LockUIBehaviour>();
-        lockCollider = GetComponent<Collider>();
+        //lockCollider = GetComponent<Collider>();
         playerController = FindFirstObjectByType<PlayerController>();
 
         inputActions = new InputActions();
@@ -78,7 +79,7 @@ public class LockInteractable : InteractableBase
         GetMeOutofLock(false);
     }
 
-    private void GetMeOutofLock(bool outOfLock)
+    private void GetMeOutofLock(bool outOfLock = true)
     {
         LockInfoCanvas.gameObject.SetActive(!outOfLock);
         hint.SetActive(!outOfLock);
@@ -86,7 +87,7 @@ public class LockInteractable : InteractableBase
         //lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
         mainCamera.enabled = outOfLock;
         lockCamera.enabled = !outOfLock;
-        lockCollider.enabled = outOfLock;
+        //lockCollider.enabled = outOfLock;
         crosshair.gameObject.SetActive(!outOfLock);
         //enbale/disable the player movement
         playerController.isInspecting = !outOfLock;
