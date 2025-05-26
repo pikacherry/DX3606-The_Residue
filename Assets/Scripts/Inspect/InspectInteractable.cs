@@ -28,6 +28,10 @@ public class InspectInteractable : InteractableBase
 
     InspectObjectRotations inspectObjectRotations;
 
+    [Space, Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip clip;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -61,6 +65,9 @@ public class InspectInteractable : InteractableBase
     public override void OnInteract()
     {
         if (!isInteractable) return;
+
+        audioSource.PlayOneShot(clip);
+
 
         base.OnInteract();
 
