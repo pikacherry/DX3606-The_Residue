@@ -14,6 +14,7 @@ public class InspectInteractable : InteractableBase
     InteractionController interactionController;
     [SerializeField] Camera lockCamera;
     [SerializeField] private Image crosshair;
+    //[SerializeField] private TextMeshProUGUI interactionPromptText;
     InputActions inputActions;
 
     [SerializeField] private Transform attachPoint;
@@ -23,6 +24,7 @@ public class InspectInteractable : InteractableBase
     Collider lockCollider;
 
     public Canvas LockInfoCanvas;
+    public Canvas ClickAgainToRotateCanvas;
 
     PlayerController playerController;
 
@@ -34,9 +36,12 @@ public class InspectInteractable : InteractableBase
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    {   
+        //customActionText = "[ Inspect ]";
         lockCamera.gameObject.SetActive(false);
+        ClickAgainToRotateCanvas.gameObject.SetActive(false);
         LockInfoCanvas.gameObject.SetActive(false);
+        //interactionPromptText.gameObject.SetActive(false);
         interactionController = FindFirstObjectByType<InteractionController>();
         mainCamera = Camera.main;
         lockCollider = GetComponent<Collider>();
@@ -58,6 +63,7 @@ public class InspectInteractable : InteractableBase
         if (esc > 0)
         {
             GetMeOutofLock(true);
+            //customActionText = "[ Inspect ]";
         }
 
     }
@@ -67,7 +73,7 @@ public class InspectInteractable : InteractableBase
         if (!isInteractable) return;
 
         audioSource.PlayOneShot(clip);
-
+        
 
         base.OnInteract();
 
@@ -78,9 +84,13 @@ public class InspectInteractable : InteractableBase
 
 
     private void GetMeOutofLock(bool outOfLock)
-    {
+    {   
+        
 
         LockInfoCanvas.gameObject.SetActive(!outOfLock);
+        ClickAgainToRotateCanvas.gameObject.SetActive(!outOfLock);
+        //interactionPromptText.gameObject.SetActive(!outOfLock);
+        
 
         //lockUIBehaviour.LockInfoCanvas.enabled = outOfLock;
         mainCamera.enabled = outOfLock;
@@ -90,13 +100,18 @@ public class InspectInteractable : InteractableBase
         //enbale/disable the player movement        
         playerController.isInspecting = !outOfLock;
 
-
+        if (!outOfLock)
+        {
+            customActionText = ""; // or null
+        }
+        
         if (mainCamera.enabled)
         {
             interactionController.SwapCamera(mainCamera);
             transform.position = originalPosition;
             transform.rotation = originalRotation;
             inspectObjectRotations.ResetRotation();
+
         }
         else
         {
